@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Post, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 import { message } from './interfaces/message';
 
@@ -21,5 +21,10 @@ export class AppController {
   @Delete()
   deleteAll(): void {
     this.appService.deleteMessages();
+  }
+
+  @Delete(':id')
+  deleteOne(@Param('id') id : number): void {
+    this.appService.deleteMessage(id);
   }
 }

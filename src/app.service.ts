@@ -29,4 +29,8 @@ export class AppService {
   deleteMessages(): void {
     this.db.run('DELETE FROM messages');
   }
+
+  deleteMessage(id: number): void {
+    this.db.run('DELETE FROM messages WHERE id = ?', [id]);
+  }
 }
